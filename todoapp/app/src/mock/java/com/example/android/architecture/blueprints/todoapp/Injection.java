@@ -23,6 +23,9 @@ import com.example.android.architecture.blueprints.todoapp.data.FakeTasksRemoteD
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksDataSource;
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository;
 import com.example.android.architecture.blueprints.todoapp.data.source.local.TasksLocalDataSource;
+import com.example.android.architecture.blueprints.todoapp.poc.data.PocRepository;
+import com.example.android.architecture.blueprints.todoapp.poc.data.local.LocalPocRepo;
+import com.example.android.architecture.blueprints.todoapp.poc.data.remote.RemotePocRepo;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -37,5 +40,10 @@ public class Injection {
         checkNotNull(context);
         return TasksRepository.getInstance(FakeTasksRemoteDataSource.getInstance(),
                 TasksLocalDataSource.getInstance(context));
+    }
+
+
+    public static PocRepository providePocRepo() {
+        return PocRepository.getInstance(LocalPocRepo.getInstance(), RemotePocRepo.getInstance());
     }
 }

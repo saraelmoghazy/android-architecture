@@ -91,7 +91,7 @@ public class AddEditTaskActivity extends AppCompatActivity {
     }
 
     private void setToolbarTitle(@Nullable String taskId) {
-        if(taskId == null) {
+        if (taskId == null) {
             mActionBar.setTitle(R.string.add_task);
         } else {
             mActionBar.setTitle(R.string.edit_task);
@@ -105,11 +105,11 @@ public class AddEditTaskActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
+//    @Override
+//    public boolean onSupportNavigateUp() {
+//        onBackPressed();
+//        return true;
+//    }
 
     @VisibleForTesting
     public IdlingResource getCountingIdlingResource() {

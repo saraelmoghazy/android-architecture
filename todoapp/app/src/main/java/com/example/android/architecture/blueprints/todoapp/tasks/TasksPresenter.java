@@ -80,6 +80,7 @@ public class TasksPresenter implements TasksContract.Presenter {
             mTasksView.setLoadingIndicator(true);
         }
         if (forceUpdate) {
+            // change mCacheDirty flag to true so that when get tasks it get from remote data source
             mTasksRepository.refreshTasks();
         }
 

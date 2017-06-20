@@ -16,6 +16,7 @@
 
 package com.example.android.architecture.blueprints.todoapp.statistics;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.NavUtils;
@@ -28,6 +29,7 @@ import android.view.MenuItem;
 
 import com.example.android.architecture.blueprints.todoapp.Injection;
 import com.example.android.architecture.blueprints.todoapp.R;
+import com.example.android.architecture.blueprints.todoapp.poc.PocActivity;
 import com.example.android.architecture.blueprints.todoapp.util.ActivityUtils;
 
 /**
@@ -54,6 +56,7 @@ public class StatisticsActivity extends AppCompatActivity {
         // Set up the navigation drawer.
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerLayout.setStatusBarBackground(R.color.colorPrimaryDark);
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         if (navigationView != null) {
             setupDrawerContent(navigationView);
@@ -89,7 +92,14 @@ public class StatisticsActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         switch (menuItem.getItemId()) {
                             case R.id.list_navigation_menu_item:
+                                //resume Main Activity
                                 NavUtils.navigateUpFromSameTask(StatisticsActivity.this);
+                                break;
+
+
+                            case R.id.pocs_menu_item:
+                                Intent intent = new Intent(StatisticsActivity.this, PocActivity.class);
+                                startActivity(intent);
                                 break;
                             case R.id.statistics_navigation_menu_item:
                                 // Do nothing, we're already on that screen

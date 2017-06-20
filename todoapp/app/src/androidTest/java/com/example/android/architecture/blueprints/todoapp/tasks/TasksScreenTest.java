@@ -107,7 +107,6 @@ public class TasksScreenTest {
      * @return Matcher that matches text in the given view
      */
     private Matcher<View> withItemText(final String itemText) {
-        checkArgument(!TextUtils.isEmpty(itemText), "itemText cannot be null or empty");
         return new TypeSafeMatcher<View>() {
             @Override
             public boolean matchesSafely(View item) {

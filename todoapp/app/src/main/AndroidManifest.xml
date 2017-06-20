@@ -18,6 +18,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.android.architecture.blueprints.todoapp">
 
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -26,14 +30,16 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.example.android.architecture.blueprints.todoapp.tasks.TasksActivity"
-            android:theme="@style/AppTheme.OverlapSystemBar">
+            android:theme="@style/AppTheme.OverlapSystemBar"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name="com.example.android.architecture.blueprints.todoapp.taskdetail.TaskDetailActivity" />
-        <activity android:name="com.example.android.architecture.blueprints.todoapp.addedittask.AddEditTaskActivity" />
+        <activity android:name="com.example.android.architecture.blueprints.todoapp.addedittask.AddEditTaskActivity"
+            android:parentActivityName=".tasks.TasksActivity"/>
         <activity
             android:name="com.example.android.architecture.blueprints.todoapp.statistics.StatisticsActivity"
             android:parentActivityName=".tasks.TasksActivity"
@@ -43,6 +49,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".tasks.TasksActivity" />
         </activity>
+
+        <activity
+            android:name=".poc.PocActivity"
+            android:parentActivityName=".tasks.TasksActivity"></activity>
     </application>
 
 </manifest>

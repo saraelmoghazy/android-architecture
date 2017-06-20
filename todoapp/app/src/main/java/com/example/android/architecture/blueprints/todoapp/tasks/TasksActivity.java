@@ -26,10 +26,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.android.architecture.blueprints.todoapp.Injection;
 import com.example.android.architecture.blueprints.todoapp.R;
+import com.example.android.architecture.blueprints.todoapp.data.Task;
+import com.example.android.architecture.blueprints.todoapp.poc.PocActivity;
 import com.example.android.architecture.blueprints.todoapp.statistics.StatisticsActivity;
 import com.example.android.architecture.blueprints.todoapp.util.ActivityUtils;
 import com.example.android.architecture.blueprints.todoapp.util.EspressoIdlingResource;
@@ -41,9 +44,18 @@ public class TasksActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
 
     private TasksPresenter mTasksPresenter;
+    static final String TAG = TasksActivity.class.getSimpleName();
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG , "onResume");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(TAG , "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tasks_act);
 
@@ -111,9 +123,16 @@ public class TasksActivity extends AppCompatActivity {
                                 // Do nothing, we're already on that screen
                                 break;
                             case R.id.statistics_navigation_menu_item:
+
+                                // start new Activity
                                 Intent intent =
                                         new Intent(TasksActivity.this, StatisticsActivity.class);
                                 startActivity(intent);
+                                break;
+
+                            case R.id.pocs_menu_item:
+                                Intent intent1 = new Intent(TasksActivity.this, PocActivity.class);
+                                startActivity(intent1);
                                 break;
                             default:
                                 break;

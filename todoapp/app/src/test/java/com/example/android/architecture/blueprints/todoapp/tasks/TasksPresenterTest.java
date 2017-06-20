@@ -88,6 +88,7 @@ public class TasksPresenterTest {
     @Test
     public void loadAllTasksFromRepositoryAndLoadIntoView() {
         // Given an initialized TasksPresenter with initialized tasks
+
         // When loading of Tasks is requested
         mTasksPresenter.setFiltering(TasksFilterType.ALL_TASKS);
         mTasksPresenter.loadTasks(true);
